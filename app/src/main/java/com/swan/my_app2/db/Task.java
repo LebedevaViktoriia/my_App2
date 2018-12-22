@@ -24,6 +24,7 @@ public class Task {
                 BASE_CONTENT_URI.buildUpon().appendPath(PATH_TASKS).build();
         public static final String COLUMN_DESCRIPTION = "description";
         public static final String COLUMN_PRIORITY = "priority";
+        public static final String COLUMN_NAME = "name";
         public static final String TABLE = "tasks";
         public static final String COL_TASK_TITLE = "title";
     }
