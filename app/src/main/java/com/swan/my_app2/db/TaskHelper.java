@@ -17,7 +17,7 @@ public class TaskHelper extends SQLiteOpenHelper {
                 Task.TaskEntry._ID + " INTEGER PRIMARY KEY, " +
 //                Task.TaskEntry.COL_TASK_TITLE + ";" +
                 Task.TaskEntry.COLUMN_NAME + " TEXT NOT NULL, " +
-                Task.TaskEntry.COLUMN_DESCRIPTION + " TEXT NOT NULL, " +
+               // Task.TaskEntry.COLUMN_DESCRIPTION + " TEXT NOT NULL, " +
                 Task.TaskEntry.COLUMN_PRIORITY + " INTEGER NOT NULL);";
         db.execSQL(createTable);
     }

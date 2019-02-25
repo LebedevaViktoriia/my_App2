@@ -58,18 +58,19 @@ public class AddTaskActivity extends AppCompatActivity {
             return;
         }
 
-        String inputDescription = ((EditText) findViewById(R.id.editTextDescription)).getText().toString();
+       /* String inputDescription = ((EditText) findViewById(R.id.editTextDescription)).getText().toString();
         if (inputDescription.length() == 0) {
             Toast.makeText(getBaseContext(), "Описание задачи не может быть пустым", Toast.LENGTH_LONG).show();
             return;
-        }
+        }*/
 
         SQLiteDatabase db = mHelper.getReadableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(Task.TaskEntry.COLUMN_NAME, inputName);
-        contentValues.put(Task.TaskEntry.COLUMN_DESCRIPTION, inputDescription);
+       // contentValues.put(Task.TaskEntry.COLUMN_DESCRIPTION, inputDescription);
         contentValues.put(Task.TaskEntry.COLUMN_PRIORITY, mPriority);
         long id =  db.insert(Task.TaskEntry.TABLE,null, contentValues);
+        db.close();
 
         // Insert new task data via a ContentResolver
         // Create new empty ContentValues object

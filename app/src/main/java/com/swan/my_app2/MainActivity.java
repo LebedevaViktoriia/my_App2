@@ -16,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -32,6 +33,8 @@ public class MainActivity extends AppCompatActivity implements LifecycleObserver
     private ListView mTaskListView;
     private ArrayAdapter<String> mAdapter;
     FloatingActionButton fabButton;
+    FloatingActionButton actionButton;
+    Button delButton;
 
 
     @Override
@@ -39,10 +42,12 @@ public class MainActivity extends AppCompatActivity implements LifecycleObserver
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        delButton = (Button) findViewById(R.id.task_delete);
         fabButton = (FloatingActionButton) findViewById(R.id.add_task);
         mHelper = new TaskHelper(this);
         mTaskListView = (ListView) findViewById(R.id.list_todo);
 //        updateUI();
+        actionButton = (FloatingActionButton) findViewById(R.id.action_add_task);
     }
 
     @Override
@@ -56,6 +61,17 @@ public class MainActivity extends AppCompatActivity implements LifecycleObserver
         startActivity(intent);
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        switch (item.getItemId()) {
+            case R.id.action_add_task:
+                Intent intent = new Intent(this, To_do_something.class);
+                startActivity(intent);
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
     /*FloatingActionButton fabButton = (FloatingActionButton)findViewById(R.id.add_task);
       fabButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,14 +112,21 @@ public class MainActivity extends AppCompatActivity implements LifecycleObserver
                         return super.onOptionsItemSelected(item);
             }
         }*/
+
     @Override
     protected void onResume() {
         super.onResume();
+        updateUI();
+
+    }
+
+    public void updateUI()
+    {
         ArrayList<String> tasklist = new ArrayList<>();
         SQLiteDatabase db = mHelper.getReadableDatabase();
         Cursor cursor = db.query(Task.TaskEntry.TABLE,
                 new String[]{Task.TaskEntry._ID, Task.TaskEntry.COLUMN_NAME, Task
-                .TaskEntry.COLUMN_PRIORITY}, null, null, null, null, Task.TaskEntry.COLUMN_PRIORITY + " ASC");
+                        .TaskEntry.COLUMN_PRIORITY}, null, null, null,  null, Task.TaskEntry.COLUMN_PRIORITY + " ASC");
 
         while (cursor.moveToNext()) {
             int index = cursor.getColumnIndex(Task.TaskEntry.COLUMN_NAME);
@@ -120,17 +143,17 @@ public class MainActivity extends AppCompatActivity implements LifecycleObserver
         }
         cursor.close();
         db.close();
-
     }
 
     public void deleteTask(View view) {
         View parent = (View) view.getParent();
         TextView taskTextView = (TextView) parent.findViewById(R.id.task_title);
         String task = String.valueOf(taskTextView.getText());
+
         SQLiteDatabase db = mHelper.getWritableDatabase();
-        db.delete(Task.TaskEntry.TABLE, Task.TaskEntry.COL_TASK_TITLE + " = ? ", new String[]{task});
+        db.delete(Task.TaskEntry.TABLE, Task.TaskEntry.COLUMN_NAME  + " = ? ", new String[]{task});
         db.close();
-//        updateUI();
+        updateUI();
     }
 
 }
