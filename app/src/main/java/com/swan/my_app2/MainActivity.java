@@ -1,15 +1,10 @@
 package com.swan.my_app2;
 
-import android.arch.lifecycle.Lifecycle;
 import android.arch.lifecycle.LifecycleObserver;
-import android.arch.lifecycle.OnLifecycleEvent;
-import android.content.ContentValues;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -17,7 +12,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -66,7 +60,7 @@ public class MainActivity extends AppCompatActivity implements LifecycleObserver
     {
         switch (item.getItemId()) {
             case R.id.action_add_task:
-                Intent intent = new Intent(this, To_do_something.class);
+                Intent intent = new Intent(this, ToDoSomethingActivity.class);
                 startActivity(intent);
             default:
                 return super.onOptionsItemSelected(item);

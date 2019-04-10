@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-public class To_do_something extends AppCompatActivity {
+public class ToDoSomethingActivity extends AppCompatActivity {
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,13 +15,20 @@ public class To_do_something extends AppCompatActivity {
         Button button1 = (Button)findViewById(R.id.button1);
         Button button2 = (Button)findViewById(R.id.button2);
         Button button3 = (Button)findViewById(R.id.button3);
+        Button batton4 = (Button) findViewById(R.id.calendar);
     }
 
 
     public void onClick(View view){
-        Intent intent = new Intent(this, Reminder.class);
+        Intent intent = new Intent(this, ReminderActivity.class);
         startActivity(intent);
 
+    }
+
+    public void onClick1(View view)
+    {
+        Intent intent = new Intent(this, CalendarViewActivity.class);
+        startActivity(intent);
     }
 
 }

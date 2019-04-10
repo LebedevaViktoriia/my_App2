@@ -56,6 +56,22 @@
             android:background="@color/colorPrimary"
             android:text="Настройки"
             android:textColor="@android:color/primary_text_dark" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="13dp"
+            android:layout_weight="1" />
+        <Button
+            android:id="@+id/calendar"
+            style="@style/TextAppearance.AppCompat.Large"
+            android:layout_width="177dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:text="Календарь"
+            android:onClick="onClick1"
+            android:textColor="@android:color/primary_text_dark" />
+            />
+
     </LinearLayout>
 
 </LinearLayout>

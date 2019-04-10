@@ -17,8 +17,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".AddTaskActivity"/>
-        <activity android:name=".To_do_something"/>
-        <activity android:name=".Reminder"/>
+        <activity android:name=".ToDoSomethingActivity"/>
+        <activity android:name=".ReminderActivity"/>
+        <activity android:name=".CalendarViewActivity"/>
     </application>
 
 </manifest>
